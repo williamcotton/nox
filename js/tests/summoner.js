@@ -3,7 +3,7 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
     module("Summoner Tests");
     
     
-    asyncTest("should not start to summon nox after 20ms touchend", function() {
+    asyncTest("should not start to summon nox after 35ms touchend", function() {
       expect(1);
       
       TouchSim.start(500, 200);
@@ -14,9 +14,9 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
         setTimeout(function() {
           ok(document.getElementsByClassName("nox").length === 0, "Nox was never created." );
           start();
-        }, 10);
+        }, 35);
 
-      }, 20);
+      }, 35);
       
     });
     
