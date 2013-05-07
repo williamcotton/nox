@@ -7,7 +7,7 @@ The Summoner brings Noxes in to existance by pulling them in from the deep blue 
 
 */
 
-define(['nox'], function(Nox, TouchSim) {
+define(['nox'], function(Nox) {
   
   var Summoner = function SummonerConstructor(options) {
     this.init(options);

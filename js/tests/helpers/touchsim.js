@@ -2,18 +2,15 @@ define([], function() {
   
   var TouchSim = {
     
-    start: function(x, y) {
-      console.log("simulating touchstart");      
+    start: function(x, y) { 
       this.fire(document, "touchstart", 0, x, y);
     }, 
     
-    move: function(x, y) {
-      console.log("simulating touchmove");      
+    move: function(x, y) {      
       this.fire(document, "touchmove", 0, x, y);
     },
     
-    end: function(x, y) {
-      console.log("simulating touchend");      
+    end: function(x, y) {     
       this.fire(document, "touchend", 0, x, y);
     },
     
@@ -25,8 +22,7 @@ define([], function() {
       var changedTouches = document.createTouchList(touch);
 
       var event = document.createEvent("TouchEvent");
-      event.initTouchEvent(type, true, true, window, null, x, y, x, y, false, false, false, false,
-      touches, targetTouches, changedTouches, 1, 0);
+      event.initTouchEvent(type, true, true, window, null, x, y, x, y, false, false, false, false, touches, targetTouches, changedTouches, 1, 0);
       element.dispatchEvent(event);
     }
     
