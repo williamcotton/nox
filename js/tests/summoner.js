@@ -3,7 +3,7 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
     module("Summoner Tests");
     
     
-    asyncTest("should not create nox DOM element after 20ms touchend", function() {
+    asyncTest("should not start to summon nox after 20ms touchend", function() {
       expect(1);
       
       TouchSim.start(500, 200);
@@ -21,7 +21,7 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
     });
     
     
-    asyncTest("should not create nox after 200ms touchend", function() {
+    asyncTest("should unsummon nox after 200ms touchend", function() {
       expect(1);
       
       TouchSim.start(500, 200);
@@ -41,7 +41,7 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
     });
     
     
-    asyncTest("should not create nox after 200ms touchmove", function() {
+    asyncTest("should unsummon nox after 200ms touchmove", function() {
       expect(1);
       
       TouchSim.start(500, 200);
@@ -70,7 +70,7 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
         TouchSim.end(500, 200);
         
         setTimeout(function() {
-          ok(document.getElementsByClassName("nox").length === 0, "Nox has DOM element has been removed." );
+          ok(document.getElementsByClassName("nox").length === 0, "Nox DOM element has been removed." );
           start();
         }, 200);
 
