@@ -4,6 +4,7 @@ require.config({
 });
 
 QUnit.config.autostart = false;
+QUnit.config.reorder = false;
  
 require([
   'tests/nox',
