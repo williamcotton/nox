@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  list-style: none;
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: #003;
+}
+
+#nidonox {
+  position: fixed;
+}
+
+.nox {
+  opacity: 0.4;
+  -webkit-transform: scale(0.0) translate3d(0,0,0);      
+  position: absolute;
+  color: white;
+  width: 300px;
+  height: 200px;
+  border: 6px solid white;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.nox.unsummoned {
+  opacity: 0.4;
+  -webkit-transform: scale(0.0) translate3d(0,0,0);
+  -webkit-transition: -webkit-transform 100ms ease-out, opacity 100ms ease-out;
+}
+
+.nox.summoned {
+  opacity: 1.0;
+  -webkit-transform: scale(1.0) translate3d(0,0,0);
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1),     opacity 500ms ease; /* older webkit */
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
+     -moz-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
+      -ms-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
+       -o-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
+          transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; /* custom */
+
+  -webkit-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1); /* older webkit */
+  -webkit-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
+     -moz-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
+      -ms-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
+       -o-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
+          transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); /* custom */
+}
