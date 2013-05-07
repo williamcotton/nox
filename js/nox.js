@@ -40,6 +40,10 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
     unsummon: function() {
       this.element.classList.remove("summoned");
       this.element.classList.add("unsummoned");
+      var element = this.element;
+      setTimeout(function() {
+        element.parentNode.removeChild(element);
+      }, 150);
     },
     
     createEventListeners: function() {
