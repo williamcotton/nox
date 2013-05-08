@@ -19,8 +19,8 @@ define([], function() {
       // How long does a finger need to be held down?
       this.forTimeInSeconds = options.forTimeInSeconds;
       
-      // What command do we whenHeldLongEnoughute after we've held down our finger long enough?
-      this.whenHeldLongEnough = options.whenHeldLongEnough;
+      // What command do we whenHeldLongEnoughAtPositionute after we've held down our finger long enough?
+      this.whenHeldLongEnoughAtPosition = options.whenHeldLongEnoughAtPosition;
       
       // What command do we call when we've removed our finger and canceled 
       this.orWhenRemovedAndCanceled = options.orWhenRemovedAndCanceled;
@@ -32,7 +32,12 @@ define([], function() {
       
       var onTouchTime = function onTouchTime(event) {
         
-        that.whenHeldLongEnough(event);
+        var x = event.touches[0].clientX;
+        var y = event.touches[0].clientY;
+        
+        var position = {x:x, y:y};
+        
+        that.whenHeldLongEnoughAtPosition(position);
         
         var onorWhenRemovedAndCanceled = function onorWhenRemovedAndCanceled(event) {
           that.orWhenRemovedAndCanceled();
