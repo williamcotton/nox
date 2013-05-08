@@ -4,14 +4,6 @@ require.config({
 });
 
 QUnit.config.autostart = false;
-QUnit.config.reorder = false;
-
-var __start = start;
-
-var start = function() {
-  console.log("start()");
-  __start();
-}
  
 require([
   'tests/nox',
