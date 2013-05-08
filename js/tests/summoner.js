@@ -1,9 +1,24 @@
 define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
 
-    module("Summoner Tests");
+    module("Summoner Tests", { 
+      setup: function() {
+        // var noxes = document.getElementsByClassName("nox");
+        // for (var i = 0; i < noxes.length; i++) {
+        //   var nox = noxes[i];
+        //   nox.parentNode.removeChild(nox);
+        // }
+      },
+      teardown: function() {
+        // var noxes = document.getElementsByClassName("nox");
+        // for (var i = 0; i < noxes.length; i++) {
+        //   var nox = noxes[i];
+        //   nox.parentNode.removeChild(nox);
+        // }
+      }
+    });
     
     
-    asyncTest("should not start to summon nox after 35ms touchend", function() {
+    asyncTest("should not start to summon nox after 45ms touchend", function() {
       expect(1);
       
       TouchSim.start(500, 200);
@@ -14,9 +29,9 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
         setTimeout(function() {
           ok(document.getElementsByClassName("nox").length === 0, "Nox was never created." );
           start();
-        }, 35);
+        }, 100);
 
-      }, 35);
+      }, 45);
       
     });
     

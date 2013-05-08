@@ -16,7 +16,6 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
   Nox.prototype = {
     
     init: function(options) {
-      this.title = options.title;
       this.element = this.createElementFromTemplate();
       this.setElementCoordinates(options.x - this.element.offsetWidth/2, options.y - this.element.offsetHeight/2);
       this.element.classList.add("summoned");

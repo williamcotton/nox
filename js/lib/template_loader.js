@@ -14,8 +14,9 @@ define(['lib/mustache'], function(Mustache) {
     loadAndAppend: function(options) {
       var templateId = options.templateId;
       var parentElement = options.appendTo;
+      var data = options.data;
       var template = document.getElementById(templateId).innerHTML;
-      var html = Mustache.to_html(template, {title: this.title});
+      var html = Mustache.to_html(template, data);
       var element = document.createElement("div");
       element.innerHTML = html;
       parentElement.appendChild(element);
