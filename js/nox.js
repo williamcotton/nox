@@ -40,7 +40,12 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
     },
     
     resetCenter: function() {
-      this.setElementCoordinates(this.centerX - this.element.offsetWidth/2, this.centerY - this.element.offsetHeight/2);
+      this.resetCenterWithWidthAndHeight(this.element.offsetWidth, this.element.offsetHeight);
+    },
+    
+    
+    resetCenterWithWidthAndHeight: function(width, height) {
+      this.setElementCoordinates(this.centerX - width/2, this.centerY - height/2);
     },
     
     setElementCoordinates: function(newX, newY) {
@@ -56,7 +61,7 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
       this.element.classList.remove("summoned");
       this.element.classList.add("unsummoned");
       var element = this.element;
-      setTimeout(function() {
+      setTimeout(function noxRemoveChildTimeout() {
         element.parentNode.removeChild(element);
       }, 150);
     },

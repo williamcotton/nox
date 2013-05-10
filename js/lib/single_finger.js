@@ -53,7 +53,7 @@ define([], function() {
         
         clearTouchTimer(event);
         
-        var clearorWhenRemovedAndCanceledTimer = function(event) {
+        var clearorWhenRemovedAndCanceledTimer = function clearorWhenRemovedAndCanceledTimer(event) {
           onorWhenRemovedAndCanceled();
           clearTimeout(orWhenRemovedAndCanceledTimeout);
           that.element.removeEventListener("touchend", clearorWhenRemovedAndCanceledTimer);
@@ -65,7 +65,7 @@ define([], function() {
         
       };
       
-      that.element.addEventListener("touchstart", function(event) {
+      that.element.addEventListener("touchstart", function touchStart(event) {
         
         if (event.target.nodeName == "INPUT") {
           return;
@@ -144,7 +144,7 @@ define([], function() {
         document.removeEventListener("touchend", docuTouchEnd);
         
         if (isDescendant(element, e)) {
-          whenLiftedUpInside(e)
+          whenLiftedUpInside(e, pageX, pageY);
         }
         else {
           whenLiftedUpOutside(e);
