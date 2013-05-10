@@ -47,7 +47,13 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
         var nox = document.getElementsByClassName("nox")[0];
 
         setTimeout(function() {
-          ok(nox.classList.contains("unsummoned"), "Nox has been unsummoned." );
+          
+          passes = false;
+          if (nox && nox.classList && nox.classList.contains("unsummoned")) {
+            passes = true;
+          }
+          
+          ok(passes, "Nox has been unsummoned." );
           start();
         }, 100);
 
@@ -67,7 +73,12 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
         var nox = document.getElementsByClassName("nox")[0];
 
         setTimeout(function() {
-          ok(nox.classList.contains("unsummoned"), "Nox has been unsummoned." );
+          passes = false;
+          if (nox && nox.classList && nox.classList.contains("unsummoned")) {
+            passes = true;
+          }
+          
+          ok(passes, "Nox has been unsummoned." );
           start();
         }, 100);
 
@@ -102,8 +113,15 @@ define(['summoner', 'tests/helpers/touchsim'], function(Summoner, TouchSim) {
       setTimeout(function() {
         TouchSim.end(500, 200);
         var nox = document.getElementsByClassName("nox")[0];
-        ok(nox.classList.contains("summoned"), "Nox has been summoned." );
-        nox.parentNode.removeChild(nox);
+        passes = false;
+        if (nox && nox.classList && nox.classList.contains("summoned")) {
+          passes = true;
+        }
+        ok(passes, "Nox has been summoned." );
+        if (nox) {
+          nox.parentNode.removeChild(nox);
+        }
+        
         start();
       }, 800);
       

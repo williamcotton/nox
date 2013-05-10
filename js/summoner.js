@@ -11,15 +11,18 @@ define([
   'lib/single_finger',
   'nox',
   'book_of_spells'
-  ], function(SingleFinger, Nox, BookOfSpells) {
+  ], function(SingleFinger, Nox, BookOfSpells) {    
     
   var nox;
   
-  SingleFinger.heldDownOn(document, {
+  SingleFinger.heldDownOn(document.getElementById("nidonox"), {
     forTimeInSeconds: 0.25,
-    whenHeldLongEnoughAtPosition: function(position) {
+    whenFirstHeld: function(position) {
       nox = new Nox(position);
-      BookOfSpells.incarnate(nox);
+      nox.become(BookOfSpells);
+    },
+    whenHeldLongEnoughAtPosition: function() {
+      nox.summoned();
     },
     orWhenRemovedAndCanceled: function() {
       nox.unsummon();

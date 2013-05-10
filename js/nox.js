@@ -17,7 +17,9 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
     
     init: function(options) {
       this.element = this.createElementFromTemplate();
-      this.setElementCoordinates(options.x - this.element.offsetWidth/2, options.y - this.element.offsetHeight/2);
+      this.centerX = options.x;
+      this.centerY = options.y;
+      this.resetCenter();
       this.element.classList.add("summoned");
       this.createEventListeners();
     },
@@ -31,9 +33,23 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
       return noxElement;
     },
     
+    become: function(object) {
+      this.essence = object;
+      this.essence.summonInto(this);
+      this.resetCenter();
+    },
+    
+    resetCenter: function() {
+      this.setElementCoordinates(this.centerX - this.element.offsetWidth/2, this.centerY - this.element.offsetHeight/2);
+    },
+    
     setElementCoordinates: function(newX, newY) {
       this.element.style.left = newX + "px";
       this.element.style.top = newY + "px";
+    },
+    
+    summoned: function() {
+      this.essence.afterSummonedBy(this);
     },
     
     unsummon: function() {

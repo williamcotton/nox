@@ -12,6 +12,8 @@ body {
 
 #nidonox {
   position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 .nox {
@@ -21,7 +23,7 @@ body {
   color: white;
   width: 300px;
   height: 200px;
-  border: 6px solid white;
+  border: 6px solid hsla(120,50%,100%,0.2);
   border-radius: 10px;
   background-color: rgba(255,255,255,0.15);
 }
@@ -35,17 +37,80 @@ body {
 .nox.summoned {
   opacity: 1.0;
   -webkit-transform: scale(1.0) translate3d(0,0,0);
-  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1),     opacity 500ms ease; /* older webkit */
-  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
-     -moz-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
-      -ms-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
-       -o-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; 
-          transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease; /* custom */
-
-  -webkit-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1); /* older webkit */
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495); 
   -webkit-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
-     -moz-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
-      -ms-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
-       -o-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
-          transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); /* custom */
+}
+
+.nox.generic {
+  opacity: 1.0;
+  -webkit-transform: scale(1.0) translate3d(0,0,0);
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), opacity 500ms ease, width 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), height 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), border-radius 200ms cubic-bezier(1.000, 0.355, 0.865, 0.550);
+  -webkit-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
+}
+
+.nox.photo {
+  opacity: 0.0;
+  text-align: center;
+  -webkit-transform: scale(10.0) translate3d(0,0,0);
+  -webkit-transition: all 200ms cubic-bezier(1.000, 0.355, 0.925, 0.695);
+}
+
+.nox.red, .nox.blue, .nox.yellow {
+  opacity: 1.0;
+  -webkit-transform: scale(1.0) translate3d(0,0,0);
+  -webkit-transition: -webkit-transform 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), background 500ms ease, opacity 500ms ease, width 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), height 300ms cubic-bezier(0.180, 0.220, 0.265, 1.495), border-radius 200ms ease;
+  -webkit-transition-timing-function: cubic-bezier(0.180, 0.220, 0.265, 1.495); 
+}
+
+.red {
+  background: hsla(0,100%,50%,0.2);
+}
+
+.blue {
+  background: hsla(200,100%,50%,0.2);
+}
+
+.yellow {
+  background: hsla(60,100%,50%,0.2);
+}
+
+.photo h1 {
+  font-family: Helvetica;
+  font-size: 60px;
+  line-height: 200px;
+}
+
+.book_of_spells {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+}
+
+.book_of_spells ul {
+  padding-top: 6px;
+}
+
+.book_of_spells ul li {
+  margin-left: 6px;
+  margin-bottom: 6px;
+  float: left;
+  width: 80px;
+  height: 80px;
+  color: white;
+  font-family: Helvetica;
+  /*line-height: 75px;*/
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 10px;
+  border: 6px solid hsla(120,50%,100%,0.05);
+}
+
+.book_of_spells ul li.photo {
+  background-repeat: no-repeat;
+  background-image: url(/images/camera-white-92.png);
+  opacity: 1.0;
+  background-position: 0px 10px;
+  border: none;
+  width: 92px;
+  height: 92px;
 }

@@ -10,15 +10,22 @@ Loads Mustache templates.
 define(['lib/mustache'], function(Mustache) {
   
   var TemplateLoader = {
-  
-    loadAndAppend: function(options) {
+    
+    load: function(options) {
       var templateId = options.templateId;
-      var parentElement = options.appendTo;
       var data = options.data;
-      var template = document.getElementById(templateId).innerHTML;
+      var _e = document.getElementById(templateId);
+      if (!_e) return;
+      var template = _e.innerHTML;
       var html = Mustache.to_html(template, data);
       var element = document.createElement("div");
       element.innerHTML = html;
+      return element;
+    },
+  
+    loadAndAppend: function(options) {
+      var parentElement = options.appendTo;
+      var element = this.load(options);
       parentElement.appendChild(element);
       return element;
     }
