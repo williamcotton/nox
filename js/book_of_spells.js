@@ -50,7 +50,7 @@ define(['lib/template_loader','lib/single_finger'], function(TemplateLoader, Sin
         
           // nox.centerX = x;
           // nox.centerY = y;
-          nox.resetCenterWithWidthAndHeight(300,200);
+          nox.resetCenterWithWidthAndHeight(312,212);
           
           while (nox.element.hasChildNodes()) {
               nox.element.removeChild(nox.element.lastChild);
