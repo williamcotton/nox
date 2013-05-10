@@ -26,6 +26,7 @@ define(['lib/mustache'], function(Mustache) {
     loadAndAppend: function(options) {
       var parentElement = options.appendTo;
       var element = this.load(options);
+      if (!element) return;
       parentElement.appendChild(element);
       return element;
     }

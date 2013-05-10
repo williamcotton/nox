@@ -18,11 +18,14 @@ define(['lib/template_loader','lib/single_finger'], function(TemplateLoader, Sin
     },
     
     afterSummonedBy: function(nox) {
-      console.log("Book loaded");
       
       var that = this;
       SingleFinger.liftedUpOn(nox.element, {
         whenLiftedUpInside: function(element) {
+          
+          if (element.className == "book_of_spells") {
+            nox.unsummon();
+          }
           
           nox.element.classList.remove("book_of_spells");
           
@@ -40,7 +43,6 @@ define(['lib/template_loader','lib/single_finger'], function(TemplateLoader, Sin
           
         },
         whenLiftedUpOutside: function(element) {
-          console.log(nox, "unsummon");
           nox.unsummon();
         }
       });

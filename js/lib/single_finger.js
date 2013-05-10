@@ -106,23 +106,22 @@ define([], function() {
         //pageX = event.pageX || event.originalEvent.pageX || event.originalEvent.touches[0].pageX;
         //pageY = event.pageY || event.originalEvent.pageY || event.originalEvent.touches[0].pageY;
         
-        // if (event.originalEvent.pageX === 0) { // temp hack for bug in Chrome for Android
-        //   screenX = event.originalEvent.touches[0].screenX;
-        //   screenY = event.originalEvent.touches[0].screenY;
-        // }
+        if (pageX === 0) { // temp hack for bug in Chrome for Android
+          console.log(event);
+          screenX = event.touches[0].screenX;
+          screenY = event.touches[0].screenY;
+        }
         
       }
       
       document.addEventListener("touchmove", docuTouchMove);
       
       document.addEventListener("touchend", function docuTouchEnd(event) {
-        if (!pageX) {
-          document.removeEventListener("touchend", docuTouchEnd);
-          document.removeEventListener("touchmove", docuTouchMove);
-          return;
-        }
-        
-        var e;
+        // if (!pageX) {
+        //   document.removeEventListener("touchend", docuTouchEnd);
+        //   document.removeEventListener("touchmove", docuTouchMove);
+        //   return;
+        // }
       
         if (screenX) { // temp hack for bug in Chrome for Android
           e = document.elementFromPoint(screenX, screenY);
@@ -130,8 +129,6 @@ define([], function() {
         else {
           e = document.elementFromPoint(pageX, pageY);
         }
-        
-        console.log(pageX, pageY, e);
         
         function isDescendant(parent, child) {
           var node = child.parentNode;
