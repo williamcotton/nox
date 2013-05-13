@@ -21,7 +21,7 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
       this.centerY = options.y;
       this.resetCenter();
       this.element.classList.add("summoned");
-      this.createEventListeners();
+      new Draggable({ element: this.element }); // This shouldn't be a constructor!
     },
     
     createElementFromTemplate: function() {
@@ -66,9 +66,6 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
         templateId: templateId + '_template',
         appendTo: this.element
       });
-      
-      
-      this.essence = object;
 
       if (width && height) {
         this.resetCenterWithWidthAndHeight(width,height);
@@ -77,13 +74,15 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
         this.resetCenter();
       }
       
+      if (object.init)
+        object.init(this);
+      
       this.element.offsetWidth; // force reflow
     },
     
     resetCenter: function() {
       this.resetCenterWithWidthAndHeight(this.element.offsetWidth, this.element.offsetHeight);
     },
-    
     
     resetCenterWithWidthAndHeight: function(width, height) {
       this.setElementCoordinates(this.centerX - width/2, this.centerY - height/2);
@@ -94,12 +93,6 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
       this.element.style.top = newY + "px";
     },
     
-    summoned: function() {
-      if (this.essence && this.essence.afterSummonedBy) {
-        this.essence.afterSummonedBy(this);
-      }
-    },
-    
     unsummon: function() {
       this.element.classList.remove("summoned");
       this.element.classList.add("unsummoned");
@@ -107,10 +100,6 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
       setTimeout(function noxRemoveChildTimeout() {
         element.parentNode.removeChild(element);
       }, 150);
-    },
-    
-    createEventListeners: function() {
-      new Draggable({ element: this.element });
     }
     
   };

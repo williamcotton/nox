@@ -13,12 +13,10 @@ define(['lib/single_finger'], function(SingleFinger) {
     
     templateId: "book_of_spells",
     
-    afterSummonedBy: function(nox) {
+    init: function(nox) {
       
       SingleFinger.liftedUpOn(nox.element, {
-        
         whenLiftedUpInside: function(element, x, y) {
-          element.classList.remove("touchhover");
           if (element.className == "book_of_spells") {
             nox.unsummon();
           }
@@ -36,28 +34,9 @@ define(['lib/single_finger'], function(SingleFinger) {
             y: y
           });
         },
-        
-        whenMovedInsideOf: function(element) {
-          var spells = nox.element.querySelectorAll("li");
-          for (var i = 0; i < spells.length; i++) {
-            var spell = spells[i];
-            spell.classList.remove("touchhover");
-          }
-          element.classList.add("touchhover");
-        },
-        
-        whenMovedOutsideOf: function(element) {
-          var spells = nox.element.querySelectorAll("li");
-          for (var i = 0; i < spells.length; i++) {
-            var spell = spells[i];
-            spell.classList.remove("touchhover");
-          }
-        },
-        
         whenLiftedUpOutside: function(element) {
           nox.unsummon();
         }
-        
       });
       
     }

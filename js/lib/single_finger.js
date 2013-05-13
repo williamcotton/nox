@@ -19,13 +19,15 @@ define([], function() {
       var forTimeInSeconds = options.forTimeInSeconds;
       
       // What do we do whenFirstHeldute after we've held down our finger long enough?
-      var whenFirstHeld = options.whenFirstHeld;
+      var whenFirstHeld = options.whenFirstHeld || function() {};
       
       // What do we do whenFirstHeld?
-      var whenHeldLongEnoughAtPosition = options.whenHeldLongEnoughAtPosition;
+      var whenHeldLongEnoughAtPosition = options.whenHeldLongEnoughAtPosition || function() {};
       
       // What do we do when we've removed our finger and canceled?
-      var orWhenRemovedAndCanceled = options.orWhenRemovedAndCanceled;
+      var orWhenRemovedAndCanceled = options.orWhenRemovedAndCanceled || function() {};
+      
+      var movementToleranceInPixels = 90;
       
       
       var touchTimeout;
@@ -51,6 +53,18 @@ define([], function() {
         clearTouchTimer(event);
         
         var clearorWhenRemovedAndCanceledTimer = function clearorWhenRemovedAndCanceledTimer(event) {
+          
+          if (event.touches[0]) {
+            var xDiff = x - event.touches[0].clientX;
+            var yDiff = y - event.touches[0].clientY;
+
+            var distance = Math.sqrt(xDiff*xDiff+yDiff*yDiff);
+
+            if (distance < movementToleranceInPixels) {
+              return;
+            }
+          }
+          
           onorWhenRemovedAndCanceled();
           clearTimeout(orWhenRemovedAndCanceledTimeout);
           element.removeEventListener("touchend", clearorWhenRemovedAndCanceledTimer);
@@ -90,12 +104,20 @@ define([], function() {
     
     liftedUpOn: function(element, options) {
 
-      var whenLiftedUpOutside = options.whenLiftedUpOutside;
-      var whenLiftedUpInside = options.whenLiftedUpInside;
-      var whenMovedInsideOf = options.whenMovedInsideOf;
-      var whenMovedOutsideOf = options.whenMovedOutsideOf;
+      var whenLiftedUpOutside = options.whenLiftedUpOutside || function() {};
+      var whenLiftedUpInside = options.whenLiftedUpInside || function() {};
+      var whenMovedInsideOf = options.whenMovedInsideOf || function() {};
+      var whenMovedOutsideOf = options.whenMovedOutsideOf || function() {};
       
       var x, y;
+      
+      var clearTouchHover = function() {
+        var elements = element.querySelectorAll("*");
+        for (var i = 0; i < elements.length; i++) {
+          var e = elements[i];
+          e.classList.remove("touchhover");
+        }
+      }
       
       function docuTouchMove(event) {
         
@@ -107,7 +129,16 @@ define([], function() {
           y = event.touches[0].screenY;
         }
         
-        checkForTouchInside(x, y, whenMovedInsideOf, whenMovedOutsideOf);
+        checkForTouchInside(x, y, function(element) {
+          whenMovedInsideOf(element, x, y);
+          clearTouchHover();
+          element.classList.add("touchhover");
+        }, function(element) {
+          whenMovedOutsideOf(element, x, y);
+          clearTouchHover();
+        });
+        
+
         
       }
       
@@ -132,15 +163,16 @@ define([], function() {
           onInside(e, x, y);
         }
         else {
-          if (onOutside) {
-            onOutside(e, x, y);
-          }
+          onOutside(e, x, y);
         }
         
       };
       
       document.addEventListener("touchend", function docuTouchEnd(event) {
-        checkForTouchInside(x, y, whenLiftedUpInside, whenLiftedUpOutside);
+        checkForTouchInside(x, y, function(element, x, y) {
+          element.classList.remove("touchhover");
+          whenLiftedUpInside(element, x, y);
+        }, whenLiftedUpOutside);
         document.removeEventListener("touchend", docuTouchEnd);
       });
       
