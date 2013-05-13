@@ -7,7 +7,7 @@ define(['nox','book_of_spells'], function(Nox, BookOfSpells) {
         
         var nox = new Nox({x:200, y:500});
         
-        BookOfSpells.incarnate(nox); 
+        nox.become(BookOfSpells); 
         
         ok( true, "Test passes");
         

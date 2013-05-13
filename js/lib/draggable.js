@@ -24,6 +24,8 @@ define([], function() {
       
       element.addEventListener("touchstart", function(event) {
         
+        event.stopPropagation();
+        
         var touchId = event.touches.length - 1;
         
         var selectStartEvent = function() { return false; };

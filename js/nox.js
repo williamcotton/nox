@@ -34,9 +34,50 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
     },
     
     become: function(object) {
+      
+      this.element.offsetWidth; // force reflow
+      
+      var templateId = object.templateId;
+      
+      var width = object.width;
+      var height = object.height;
+      
+      var x = object.x;
+      var y = object.y;
+      
+      // this.centerX = x;
+      // this.centerY = y;
+      
+      while (this.element.hasChildNodes()) {
+          this.element.removeChild(this.element.lastChild);
+      }
+  
+      this.element.className = "nox summoned";
+      this.element.classList.add("becomming");
+      var nox = this;
+      setTimeout(function() {
+        nox.element.classList.remove("becomming");
+      }, 300);
+      
+      
+      this.element.classList.add(templateId);
+      
+      TemplateLoader.loadAndAppend({
+        templateId: templateId + '_template',
+        appendTo: this.element
+      });
+      
+      
       this.essence = object;
-      this.essence.summonInto(this);
-      this.resetCenter();
+
+      if (width && height) {
+        this.resetCenterWithWidthAndHeight(width,height);
+      }
+      else {
+        this.resetCenter();
+      }
+      
+      this.element.offsetWidth; // force reflow
     },
     
     resetCenter: function() {
@@ -54,7 +95,9 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
     },
     
     summoned: function() {
-      this.essence.afterSummonedBy(this);
+      if (this.essence && this.essence.afterSummonedBy) {
+        this.essence.afterSummonedBy(this);
+      }
     },
     
     unsummon: function() {

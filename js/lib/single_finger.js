@@ -14,24 +14,21 @@ define([], function() {
     heldDownOn: function(element, options) {
       
       // What element are we listening for a single finger being held down?
-      this.element = element;
       
       // How long does a finger need to be held down?
-      this.forTimeInSeconds = options.forTimeInSeconds;
+      var forTimeInSeconds = options.forTimeInSeconds;
       
       // What do we do whenFirstHeldute after we've held down our finger long enough?
-      this.whenFirstHeld = options.whenFirstHeld;
+      var whenFirstHeld = options.whenFirstHeld;
       
       // What do we do whenFirstHeld?
-      this.whenHeldLongEnoughAtPosition = options.whenHeldLongEnoughAtPosition;
+      var whenHeldLongEnoughAtPosition = options.whenHeldLongEnoughAtPosition;
       
       // What do we do when we've removed our finger and canceled?
-      this.orWhenRemovedAndCanceled = options.orWhenRemovedAndCanceled;
+      var orWhenRemovedAndCanceled = options.orWhenRemovedAndCanceled;
       
       
       var touchTimeout;
-      
-      var that = this;
       
       var onTouchTime = function onTouchTime(event) {
         
@@ -40,32 +37,32 @@ define([], function() {
         
         var position = {x:x, y:y};
         
-        that.whenFirstHeld(position);
+        whenFirstHeld(position);
         
         var onorWhenRemovedAndCanceled = function onorWhenRemovedAndCanceled(event) {
-          that.orWhenRemovedAndCanceled();
+          orWhenRemovedAndCanceled();
         };
         
         var orWhenRemovedAndCanceledTimeout = setTimeout(function timeoutFunc() {
-          that.whenHeldLongEnoughAtPosition();
+          whenHeldLongEnoughAtPosition();
           onorWhenRemovedAndCanceled = function() {};
-        }, (that.forTimeInSeconds*1000)-50);
+        }, (forTimeInSeconds*1000)-50);
         
         clearTouchTimer(event);
         
         var clearorWhenRemovedAndCanceledTimer = function clearorWhenRemovedAndCanceledTimer(event) {
           onorWhenRemovedAndCanceled();
           clearTimeout(orWhenRemovedAndCanceledTimeout);
-          that.element.removeEventListener("touchend", clearorWhenRemovedAndCanceledTimer);
-          that.element.removeEventListener("touchmove", clearorWhenRemovedAndCanceledTimer);
+          element.removeEventListener("touchend", clearorWhenRemovedAndCanceledTimer);
+          element.removeEventListener("touchmove", clearorWhenRemovedAndCanceledTimer);
         };
         
-        that.element.addEventListener("touchend", clearorWhenRemovedAndCanceledTimer);
-        that.element.addEventListener("touchmove", clearorWhenRemovedAndCanceledTimer);
+        element.addEventListener("touchend", clearorWhenRemovedAndCanceledTimer);
+        element.addEventListener("touchmove", clearorWhenRemovedAndCanceledTimer);
         
       };
       
-      that.element.addEventListener("touchstart", function touchStart(event) {
+      element.addEventListener("touchstart", function touchStart(event) {
         
         if (event.target.nodeName == "INPUT") {
           return;
@@ -81,79 +78,72 @@ define([], function() {
       });
       
       var clearTouchTimer = function(event) {
-        that.element.removeEventListener("touchend", clearTouchTimer);
-        that.element.removeEventListener("touchmove", clearTouchTimer);
+        element.removeEventListener("touchend", clearTouchTimer);
+        element.removeEventListener("touchmove", clearTouchTimer);
         clearTimeout(touchTimeout);
         event.preventDefault();
       };
       
-      that.element.addEventListener("touchend", clearTouchTimer);
-      that.element.addEventListener("touchmove", clearTouchTimer);
+      element.addEventListener("touchend", clearTouchTimer);
+      element.addEventListener("touchmove", clearTouchTimer);
     },
     
     liftedUpOn: function(element, options) {
-      
+
       var whenLiftedUpOutside = options.whenLiftedUpOutside;
       var whenLiftedUpInside = options.whenLiftedUpInside;
+      var whenMovedInsideOf = options.whenMovedInsideOf;
+      var whenMovedOutsideOf = options.whenMovedOutsideOf;
       
-      var pageX, pageY, screenX, screenY;
+      var x, y;
       
       function docuTouchMove(event) {
         
-        pageX = event.pageX;
-        pageY = event.pageY;
+        x = event.pageX;
+        y = event.pageY;
         
-        //pageX = event.pageX || event.originalEvent.pageX || event.originalEvent.touches[0].pageX;
-        //pageY = event.pageY || event.originalEvent.pageY || event.originalEvent.touches[0].pageY;
-        
-        if (pageX === 0) { // temp hack for bug in Chrome for Android
-          console.log(event);
-          screenX = event.touches[0].screenX;
-          screenY = event.touches[0].screenY;
+        if (x === 0) { // temp hack for bug in Chrome for Android
+          x = event.touches[0].screenX;
+          y = event.touches[0].screenY;
         }
+        
+        checkForTouchInside(x, y, whenMovedInsideOf, whenMovedOutsideOf);
         
       }
       
       document.addEventListener("touchmove", docuTouchMove);
       
-      document.addEventListener("touchend", function docuTouchEnd(event) {
-        // if (!pageX) {
-        //   document.removeEventListener("touchend", docuTouchEnd);
-        //   document.removeEventListener("touchmove", docuTouchMove);
-        //   return;
-        // }
+      var checkForTouchInside = function(x, y, onInside, onOutside) {
+
+        var e = document.elementFromPoint(x, y);
       
-        if (screenX) { // temp hack for bug in Chrome for Android
-          e = document.elementFromPoint(screenX, screenY);
-        }
-        else {
-          e = document.elementFromPoint(pageX, pageY);
-        }
-        
-        function isDescendant(parent, child) {
+        var isDescendant = function (parent, child) {
           var node = child.parentNode;
-          while (node != null) {
+          while (node !== null) {
             if (node == parent) {
               return true;
             }
             node = node.parentNode;
           }
           return false;
-        }
-        
-        document.removeEventListener("touchend", docuTouchEnd);
-        
+        };
+      
         if (isDescendant(element, e)) {
-          whenLiftedUpInside(e, pageX, pageY);
+          onInside(e, x, y);
         }
         else {
-          whenLiftedUpOutside(e);
+          if (onOutside) {
+            onOutside(e, x, y);
+          }
         }
         
-        //document.removeEventListener("touchend", docuTouchMove);
-        
-        
+      };
+      
+      document.addEventListener("touchend", function docuTouchEnd(event) {
+        checkForTouchInside(x, y, whenLiftedUpInside, whenLiftedUpOutside);
+        document.removeEventListener("touchend", docuTouchEnd);
       });
+      
     }
     
   };
