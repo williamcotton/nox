@@ -32,7 +32,7 @@ define([], function() {
       
       var touchTimeout;
       
-      var onTouchTime = function onTouchTime(event) {
+      var onTouchTime = function (event) {
         
         var x = event.touches[0].clientX;
         var y = event.touches[0].clientY;
@@ -41,7 +41,7 @@ define([], function() {
         
         whenFirstHeld(position);
         
-        var onorWhenRemovedAndCanceled = function onorWhenRemovedAndCanceled(event) {
+        var onorWhenRemovedAndCanceled = function (event) {
           orWhenRemovedAndCanceled();
         };
         
@@ -52,7 +52,7 @@ define([], function() {
         
         clearTouchTimer(event);
         
-        var clearorWhenRemovedAndCanceledTimer = function clearorWhenRemovedAndCanceledTimer(event) {
+        var clearorWhenRemovedAndCanceledTimer = function (event) {
           
           if (event.touches[0]) {
             var xDiff = x - event.touches[0].clientX;
@@ -117,9 +117,9 @@ define([], function() {
           var e = elements[i];
           e.classList.remove("touchhover");
         }
-      }
+      };
       
-      function docuTouchMove(event) {
+      var onTouchMove = function(event) {
         
         x = event.pageX;
         y = event.pageY;
@@ -138,11 +138,7 @@ define([], function() {
           clearTouchHover();
         });
         
-
-        
-      }
-      
-      document.addEventListener("touchmove", docuTouchMove);
+      };
       
       var checkForTouchInside = function(x, y, onInside, onOutside) {
 
@@ -167,6 +163,8 @@ define([], function() {
         }
         
       };
+      
+      document.addEventListener("touchmove", onTouchMove);
       
       document.addEventListener("touchend", function docuTouchEnd(event) {
         checkForTouchInside(x, y, function(element, x, y) {

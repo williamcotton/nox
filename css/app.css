@@ -57,7 +57,7 @@ body {
   -webkit-transition: all 200ms cubic-bezier(1.000, 0.355, 0.925, 0.695);
 }
 
-.nox.red, .nox.blue, .nox.yellow {
+.nox.red, .nox.blue, .nox.yellow, .nox.pink, .nox.maroon, .nox.crimson, .nox.rust, .nox.cream, .nox.goldenrod, .nox.gold, .nox.amber {
   width: 300px;
   height: 200px;
   opacity: 1.0;
@@ -73,13 +73,39 @@ body {
 .red {
   background: hsla(0,100%,50%,0.2);
 }
-
 .blue {
   background: hsla(200,100%,50%,0.2);
 }
-
 .yellow {
   background: hsla(60,100%,50%,0.2);
+}
+.pink {
+  background: hsla(0,90%,90%,0.4);
+}
+.maroon {
+  background: hsla(10,90%,30%,0.3);
+}
+.crimson {
+  background: hsla(0,100%,50%,0.3);
+}
+.rust {
+  background: hsla(30,80%,40%,0.3);
+}
+.cream {
+  background: hsla(60,80%,80%,0.4);
+}
+.gold {
+  background: hsla(55,100%,50%,0.3);
+}
+.goldenrod {
+  background: hsla(50,90%,50%,0.3);
+}
+
+.poedoe {
+  width: 300px;
+  height: 200px;
+  opacity: 1.0;
+  background: hsla(120,100%,50%,0.2);
 }
 
 .photo h1 {
@@ -113,6 +139,31 @@ body {
   text-transform: uppercase;
   border-radius: 10px;
   border: 6px solid hsla(120,50%,100%,0.05);
+}
+
+.book_of_spells ul li ul.selected {
+  visibility: visible;
+  -webkit-transition: all 150ms ease;
+  opacity: 1.0;
+}
+
+.book_of_spells ul li ul {
+  -webkit-transition: all 75ms ease;
+  opacity: 0.0;
+  visibility:hidden;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
+
+.book_of_spells ul li.red ul {
+  top: -110px;
+  left: -12px;
+}
+
+.book_of_spells ul li.yellow ul {
+  top: -12px;
+  left: -12px;
 }
 
 .book_of_spells ul li.touchhover {

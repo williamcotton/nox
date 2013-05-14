@@ -3,7 +3,30 @@
 Nox
 ---
 
+A nox is an HTML DOM element that can be moved around the screen using a finger or a pointer.
+It becomes something else by loading and morphing in to other HTML Templetes and by calling their initilization function.
+
 A Nox is a box that lives on my screen.
+  (it is Draggable, and uses a TemplateLoader to load HTML)
+
+It can become something else.
+  (it has a become function that looks for
+    templateId: , - which connects it to an HTML template that is loaded by the nox
+    width: , - which changes the width of the nox
+    height: ,  - which changes the height of the nox
+    init: function () {} - which is called on this other thing by the nox)
+    
+In HTML, it is a <div> with a class of "nox".
+
+It has a few other classes associated with it: "summoned", "becoming", and "unsummoned". 
+all reflecting transitional states of the visual presentation...
+...elements popping into view, morphing into another, or shrinking back to the void.
+
+There are a few helper functions related changes in width and height and how it affects the center position as 
+Noxes have a coordinate system based on the center of the element, reflecting the touch and pointer based interface.
+
+It's a view that manages other views...
+
 
 */
 
