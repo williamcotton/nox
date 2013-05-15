@@ -14,6 +14,9 @@ define(['lib/template_loader','lib/single_finger', 'spells/poedoe', 'spells/phot
     photo: Photo
   };
   
+  var transitions = ["pop", "slideout", "glitch"];
+  var transition_count = 0;
+  
   var simpleSpell = function(element) {
     return {
       templateId: element.className,
@@ -55,6 +58,10 @@ define(['lib/template_loader','lib/single_finger', 'spells/poedoe', 'spells/phot
     templateId: "book_of_spells",
     
     init: function(nox) {
+      
+      transition_count++;
+      nox.element.querySelectorAll("ul:first-child")[0].className = transitions[transition_count%transitions.length];
+      
       SingleFinger.liftedUpOn(nox.element, {
         whenLiftedUpInside: function(element, x, y) {
           if (element.className == "book_of_spells") {
