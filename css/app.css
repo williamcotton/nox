@@ -143,27 +143,34 @@ body {
 
 .book_of_spells ul li ul.selected {
   visibility: visible;
-  -webkit-transition: all 150ms ease;
+  -webkit-transition: all 165ms ease;
   opacity: 1.0;
 }
 
 .book_of_spells ul li ul {
-  -webkit-transition: all 75ms ease;
+  -webkit-transition: all 165ms ease;
   opacity: 0.0;
-  visibility:hidden;
+  visibility: hidden;
   width: 200px;
   height: 200px;
   position: absolute;
 }
 
-.book_of_spells ul li.red ul {
+.book_of_spells ul li:nth-child(2) ul {
   top: -110px;
   left: -12px;
 }
 
-.book_of_spells ul li.yellow ul {
+.book_of_spells ul li:nth-child(4) ul {
   top: -12px;
   left: -12px;
+}
+
+.book_of_spells ul li ul li {
+
+} 
+.book_of_spells ul li ul.selected li {
+  
 }
 
 .book_of_spells ul li.touchhover {
@@ -180,4 +187,19 @@ body {
   border: none;
   width: 92px;
   height: 92px;
+}
+
+
+
+
+.book_of_spells ul.glitch li ul li {
+  left: 0px;
+  -webkit-transform: translateX(0px) rotateX(-3600deg) rotateY(-1800deg) rotateZ(1800deg) translateY(0px) scale(10,0.5);
+  -webkit-transition: all 165ms ease;
+} 
+.book_of_spells ul.glitch li ul.selected li {
+  left: 0;
+  -webkit-transform: translateX(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0px) scale(1,1);
+  position: relative;
+  -webkit-transition: all 165ms ease;
 }

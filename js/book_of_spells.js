@@ -65,7 +65,9 @@ define(['lib/template_loader','lib/single_finger', 'spells/poedoe', 'spells/phot
           }
         },
         whenMovedInsideOf: function(element) {
+          element.offsetWidth;
           checkForMenu(element);
+          element.offsetWidth;
         },
         whenLiftedUpOutside: function(element) {
           nox.unsummon();
