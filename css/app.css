@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #003;
+  background-color: #110322;
 }
 
 #nidonox {
@@ -115,9 +115,12 @@ body {
 }
 
 .book_of_spells {
+  -webkit-transform: rotateZ(0deg) scale(1.0);
   width: 200px;
   height: 200px;
   border-radius: 200px;
+/*  background: transparent;
+  border: none;*/
 }
 
 .book_of_spells ul {
@@ -214,6 +217,7 @@ body {
 .book_of_spells ul li:nth-child(2) ul.selected li:nth-child(3) {
   top: -104px;
   left: 86px;
+
 }
 
 .book_of_spells ul li:nth-child(2) ul.selected li:nth-child(4) {
@@ -226,10 +230,24 @@ body {
   z-index: 1;
 }
 
+.book_of_spells ul li:nth-child(4) ul.selected li:nth-child(2) {
+  left: 86px;
+}
+
+.book_of_spells ul li:nth-child(4) ul.selected li:nth-child(3) {
+  top: 92px;
+}
+
+.book_of_spells ul li:nth-child(4) ul.selected li:nth-child(4) {
+  top: 86px;
+  left: 86px;
+}
+
+
 .book_of_spells ul li.touchhover {
   border: 6px solid hsla(120,50%,100%,0.25);
   -webkit-transform: scale(1.12) translate3d(0,0,0);
-  -webkit-transition: all 150ms ease;
+  -webkit-transition: all 50ms ease;
 }
 
 .book_of_spells ul li.photo {
