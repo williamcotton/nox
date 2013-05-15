@@ -143,12 +143,12 @@ body {
 
 .book_of_spells ul li ul.selected {
   visibility: visible;
-  -webkit-transition: all 165ms ease;
+  -webkit-transition: all 155ms ease;
   opacity: 1.0;
 }
 
 .book_of_spells ul li ul {
-  -webkit-transition: all 165ms ease;
+  -webkit-transition: all 155ms ease;
   opacity: 0.0;
   visibility: hidden;
   width: 200px;
@@ -156,21 +156,74 @@ body {
   position: absolute;
 }
 
-.book_of_spells ul li:nth-child(2) ul {
+.book_of_spells ul.pop li ul, .book_of_spells ul.pop li ul.selected {
+  -webkit-transition: all 155ms ease;
+}
+
+.book_of_spells ul.pop li:nth-child(2) ul {
   top: -110px;
   left: -12px;
 }
 
-.book_of_spells ul li:nth-child(4) ul {
+.book_of_spells ul.pop li:nth-child(4) ul {
   top: -12px;
   left: -12px;
 }
 
-.book_of_spells ul li ul li {
+.book_of_spells ul.slideout li ul, .book_of_spells ul.slideout li ul.selected {
+  -webkit-transition: all 55ms ease;
+}
 
+.book_of_spells ul.slideout li ul li {
+  top: -6px;
+  left: -12px;
+  position: absolute;
+  -webkit-transition-delay: 0ms;
+  -webkit-transition: all 165ms ease-in;
 } 
-.book_of_spells ul li ul.selected li {
-  
+.book_of_spells ul.slideout li ul.selected li {
+  -webkit-transition-delay: 65ms;
+  -webkit-transition: all 165ms ease-in;
+}
+
+.book_of_spells ul.glitch li ul li {
+  top: -6px;
+  left: -12px;
+  -webkit-transform: translateX(0px) rotateX(-3600deg) rotateY(-1800deg) rotateZ(1800deg) translateY(0px) scale(10,0.5);
+  -webkit-transition: all 165ms ease;
+} 
+.book_of_spells ul.glitch li ul.selected li {
+  -webkit-transform: translateX(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0px) scale(1.0,1.0);
+  position: absolute;
+  -webkit-transition: all 165ms ease;
+}
+.book_of_spells ul.glitch li ul.selected li.touchhover {
+  -webkit-transform: scale(1.1,1.1);
+  -webkit-transition: all 50ms ease;
+}
+/* 2 */
+.book_of_spells ul li:nth-child(2) ul.selected li:nth-child(1) {
+  top: -104px;
+}
+
+.book_of_spells ul.slideout li:nth-child(2) ul.selected li:nth-child(2) {
+  -webkit-transition: all 0ms ease;
+  z-index: 1;
+}
+
+.book_of_spells ul li:nth-child(2) ul.selected li:nth-child(3) {
+  top: -104px;
+  left: 86px;
+}
+
+.book_of_spells ul li:nth-child(2) ul.selected li:nth-child(4) {
+  left: 86px;
+}
+
+/* 4 */
+.book_of_spells ul.slideout li:nth-child(4) ul.selected li:nth-child(1) {
+  -webkit-transition: all 0ms ease;
+  z-index: 1;
 }
 
 .book_of_spells ul li.touchhover {
@@ -187,19 +240,4 @@ body {
   border: none;
   width: 92px;
   height: 92px;
-}
-
-
-
-
-.book_of_spells ul.glitch li ul li {
-  left: 0px;
-  -webkit-transform: translateX(0px) rotateX(-3600deg) rotateY(-1800deg) rotateZ(1800deg) translateY(0px) scale(10,0.5);
-  -webkit-transition: all 165ms ease;
-} 
-.book_of_spells ul.glitch li ul.selected li {
-  left: 0;
-  -webkit-transform: translateX(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0px) scale(1,1);
-  position: relative;
-  -webkit-transition: all 165ms ease;
 }
