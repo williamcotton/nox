@@ -200,7 +200,7 @@ body {
   position: absolute;
   -webkit-transition: all 165ms ease;
 }
-.book_of_spells ul.glitch li ul.selected li.touchhover {
+.book_of_spells ul li ul.selected li.touchhover {
   -webkit-transform: scale(1.1,1.1);
   -webkit-transition: all 50ms ease;
 }
