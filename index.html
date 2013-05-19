@@ -6,7 +6,7 @@
   <meta name="description" content="a nox is a box that lives on my screen">
   <meta name="author" content="William Cotton">
   <link rel="stylesheet" href="css/app.css?v=1.0">
-  <meta name="viewport" content="initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -15,7 +15,6 @@
   
   <div id="nidowrapper">
     <div id="nidonox">
-
     </div>
   </div>
   
@@ -31,6 +30,61 @@
     </div>
   </script>
   
+  <script id="drum_machine_template" type="text/template">
+    <div class="drum_machine">
+      <ul class="steps 0">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="steps 1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="steps 2">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="steps 3">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <ul class="steps 0">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </script>
+  
   <script id="book_of_spells_template" type="text/template">
     <div class="book_of_spells">
       <ul class="glitch">
@@ -39,7 +93,7 @@
           <ul>
             <li class="pink"></li>
             <li class="maroon"></li>
-            <li class="crimson"></li>
+            <li class="drum_machine"></li>
             <li class="rust"></li>
           </ul>
         </li>

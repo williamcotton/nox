@@ -62,8 +62,8 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
       
       var templateId = object.templateId;
       
-      var width = object.width;
-      var height = object.height;
+      var width = object.width + 12; // 12 = 6 width border * 2
+      var height = object.height + 12;
       
       var x = object.x;
       var y = object.y;
@@ -75,13 +75,7 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
           this.element.removeChild(this.element.lastChild);
       }
   
-      this.element.className = "nox summoned";
-      this.element.classList.add("becomming");
-      var nox = this;
-      setTimeout(function() {
-        nox.element.classList.remove("becomming");
-      }, 300);
-      
+      this.element.className = "nox summoned";      
       
       this.element.classList.add(templateId);
       
@@ -96,6 +90,15 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
       else {
         this.resetCenter();
       }
+      
+      this.element.classList.add("becomming");
+      var nox = this;
+      setTimeout(function() {
+        nox.element.classList.add("became");
+        nox.element.classList.remove("becomming");
+        if (object.loaded)
+          object.loaded(nox);
+      }, 300);
       
       if (object.init)
         object.init(this);

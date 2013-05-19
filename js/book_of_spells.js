@@ -7,11 +7,18 @@ An incarnation spell breathes new life in to a nox.
 
 */
 
-define(['lib/template_loader','lib/single_finger', 'spells/poedoe', 'spells/photo'], function(TemplateLoader, SingleFinger, PoeDoe, Photo) {
+define([
+  'lib/template_loader',
+  'lib/single_finger', 
+  'spells/poedoe', 
+  'spells/photo', 
+  'spells/drum_machine'
+  ], function(TemplateLoader, SingleFinger, PoeDoe, Photo, DrumMachine) {
   
   var Spells = {
     poedoe: PoeDoe,
-    photo: Photo
+    photo: Photo,
+    drum_machine: DrumMachine
   };
   
   var transitions = ["pop", "slideout", "glitch"];
@@ -20,8 +27,8 @@ define(['lib/template_loader','lib/single_finger', 'spells/poedoe', 'spells/phot
   var simpleSpell = function(element) {
     return {
       templateId: element.className,
-      width: 312,
-      height: 212
+      width: 300,
+      height: 200
     };
   };
   

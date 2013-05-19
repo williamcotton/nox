@@ -2,6 +2,7 @@ define([], function() {
   
   var PoeDoe = {
     
+    //
     templateId: "poedoe",
     
     width: 312,

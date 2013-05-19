@@ -115,7 +115,9 @@ define([], function() {
         var elements = element.querySelectorAll("*");
         for (var i = 0; i < elements.length; i++) {
           var e = elements[i];
-          e.classList.remove("touchhover");
+          if (e.classList) {
+            e.classList.remove("touchhover");
+          }
         }
       };
       
@@ -132,7 +134,8 @@ define([], function() {
         checkForTouchInside(x, y, function(element) {
           whenMovedInsideOf(element, x, y);
           clearTouchHover();
-          element.classList.add("touchhover");
+          if (element.classList)
+            element.classList.add("touchhover");
         }, function(element) {
           whenMovedOutsideOf(element, x, y);
           clearTouchHover();
@@ -168,7 +171,8 @@ define([], function() {
       
       document.addEventListener("touchend", function docuTouchEnd(event) {
         checkForTouchInside(x, y, function(element, x, y) {
-          element.classList.remove("touchhover");
+          if (element.classList)
+            element.classList.remove("touchhover");
           whenLiftedUpInside(element, x, y);
         }, whenLiftedUpOutside);
         document.removeEventListener("touchend", docuTouchEnd);
