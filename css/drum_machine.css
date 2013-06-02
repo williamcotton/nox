@@ -1,0 +1,34 @@
+.nox.drum_machine .drum_machine {
+  -webkit-transform: scale(30.0, 0.0);
+  -webkit-transition: all 90ms ease-out;
+  margin: -1px;
+  padding: 2px;
+}
+
+.nox.drum_machine.became .drum_machine {
+  -webkit-transform: scale(1.0, 1.0);
+  -webkit-transition: all 90ms ease-out;
+}
+
+.nox.drum_machine {
+  opacity: 1.0;
+  overflow: hidden;
+  padding: 1px 0px 1px 1px;
+  width: 500px;
+  height: 355px;
+  background: hsla(120,100%,100%, 0.1);
+  border-color: hsla(120,100%,100%, 0.2);
+}
+
+.nox.drum_machine ul.steps li {
+  width: 52px;
+  height: 52px;
+  margin: 5px;
+  float: left;
+  border-radius: 5px;
+  background: hsla(0,50%,100%, 0.4);
+}
+
+.nox.drum_machine ul.steps li.on {
+  background: hsla(0,50%,100%, 0.9);
+}

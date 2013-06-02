@@ -21,9 +21,6 @@ define([
     drum_machine: DrumMachine
   };
   
-  var transitions = ["pop", "slideout", "glitch"];
-  var transition_count = 0;
-  
   var simpleSpell = function(element) {
     return {
       templateId: element.className,
@@ -42,9 +39,10 @@ define([
       element = element.parentElement;
     }
     return false;
-  }
+  };
   
   var checkForMenu = function(element) {
+    element.offsetWidth;
     if (!hasCurrentMenuAsParent(element)) {
       var submenus = document.querySelectorAll(".book_of_spells ul li ul");
       for (var i = 0; i < submenus.length; i++) {
@@ -58,6 +56,7 @@ define([
         } 
       } 
     }
+    element.offsetWidth;
   };
   
   var BookOfSpells = {
@@ -65,9 +64,6 @@ define([
     templateId: "book_of_spells",
     
     init: function(nox) {
-      
-      transition_count++;
-      nox.element.querySelectorAll("ul:first-child")[0].className = transitions[transition_count%transitions.length];
       
       SingleFinger.liftedUpOn(nox.element, {
         whenLiftedUpInside: function(element, x, y) {
@@ -79,9 +75,7 @@ define([
           }
         },
         whenMovedInsideOf: function(element) {
-          element.offsetWidth;
           checkForMenu(element);
-          element.offsetWidth;
         },
         whenLiftedUpOutside: function(element) {
           nox.unsummon();

@@ -1,0 +1,170 @@
+.nox.book_of_spells {
+  -webkit-transform: rotateZ(0deg) scale(1.0);
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+/*  background: transparent;
+  border: none;*/
+}
+
+.nox.book_of_spells ul {
+  padding-top: 6px;
+}
+
+.nox.book_of_spells ul li {
+  -webkit-transform: scale(1.0);
+  -webkit-transition: all 50ms ease;
+  margin-left: 6px;
+  margin-bottom: 6px;
+  float: left;
+  width: 80px;
+  height: 80px;
+  color: white;
+  font-family: Helvetica;
+  /*line-height: 75px;*/
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 10px;
+  border: 6px solid hsla(120,50%,100%,0.05);
+}
+
+.nox.book_of_spells ul li ul.selected {
+  visibility: visible;
+  -webkit-transition: all 155ms ease;
+  opacity: 1.0;
+}
+
+.nox.book_of_spells ul li ul {
+  -webkit-transition: all 155ms ease;
+  opacity: 0.0;
+  visibility: hidden;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+}
+
+.nox.book_of_spells ul.pop li ul, .nox.book_of_spells ul.pop li ul.selected {
+  -webkit-transition: all 155ms ease;
+}
+
+.nox.book_of_spells ul.pop li ul li {
+  top: -6px;
+  left: -12px;
+  position: absolute;
+  -webkit-transition-delay: 0ms;
+  -webkit-transition: all 0ms ease-in;
+}
+
+.nox.book_of_spells ul.slideout li ul, .nox.book_of_spells ul.slideout li ul.selected {
+  -webkit-transition: all 55ms ease;
+}
+
+.nox.book_of_spells ul.slideout li ul li {
+  top: -6px;
+  left: -12px;
+  position: absolute;
+  -webkit-transition-delay: 0ms;
+  -webkit-transition: all 165ms ease-in;
+} 
+.nox.book_of_spells ul.slideout li ul.selected li {
+  -webkit-transition-delay: 65ms;
+  -webkit-transition: all 165ms ease-in;
+}
+
+.nox.book_of_spells ul.glitch li ul li {
+  top: -6px;
+  left: -12px;
+  -webkit-transform: translateX(0px) rotateX(-3600deg) rotateY(-1800deg) rotateZ(1800deg) translateY(0px) scale(10,0.5);
+  -webkit-transition: all 165ms ease;
+} 
+.nox.book_of_spells ul.glitch li ul.selected li {
+  -webkit-transform: translateX(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0px) scale(1.0,1.0);
+  position: absolute;
+  -webkit-transition: all 165ms ease;
+}
+.nox.book_of_spells ul li ul.selected li.touchhover {
+  -webkit-transform: scale(1.1,1.1);
+  -webkit-transition: all 50ms ease;
+}
+/* 2 */
+.nox.book_of_spells ul li:nth-child(2) ul.selected li:nth-child(1) {
+  top: -104px;
+}
+
+.nox.book_of_spells ul.slideout li:nth-child(2) ul.selected li:nth-child(2) {
+  -webkit-transition: all 0ms ease;
+  z-index: 1;
+}
+
+.nox.book_of_spells ul li:nth-child(2) ul.selected li:nth-child(3) {
+  top: -104px;
+  left: 86px;
+
+}
+
+.nox.book_of_spells ul li:nth-child(2) ul.selected li:nth-child(4) {
+  left: 86px;
+}
+
+/* 4 */
+.nox.book_of_spells ul.slideout li:nth-child(4) ul.selected li:nth-child(1) {
+  -webkit-transition: all 0ms ease;
+  z-index: 1;
+}
+
+.nox.book_of_spells ul li:nth-child(4) ul.selected li:nth-child(2) {
+  left: 86px;
+}
+
+.nox.book_of_spells ul li:nth-child(4) ul.selected li:nth-child(3) {
+  top: 92px;
+}
+
+.nox.book_of_spells ul li:nth-child(4) ul.selected li:nth-child(4) {
+  top: 86px;
+  left: 86px;
+}
+
+.nox.book_of_spells ul li.touchhover {
+  border: 6px solid hsla(120,50%,100%,0.25);
+  -webkit-transform: scale(1.12);
+  -webkit-transition: all 50ms ease;
+}
+
+.nox.red, .nox.blue, .nox.yellow, .nox.pink, .nox.maroon, .nox.crimson, .nox.rust, .nox.cream, .nox.goldenrod, .nox.gold, .nox.amber {
+  width: 300px;
+  height: 200px;
+  opacity: 1.0;
+  -webkit-transform: scale(1.0);
+}
+
+.nox.red, .red {
+  background: hsla(0,100%,50%,0.2);
+}
+.nox.blue, .blue {
+  background: hsla(200,100%,50%,0.2);
+}
+.nox.yellow, .yellow {
+  background: hsla(60,100%,50%,0.2);
+}
+.nox.pink, .pink {
+  background: hsla(0,90%,90%,0.4);
+}
+.nox.maroon, .maroon {
+  background: hsla(10,90%,30%,0.3);
+}
+.nox.crimson, .crimson {
+  background: hsla(0,100%,50%,0.3);
+}
+.nox.rust, .rust {
+  background: hsla(30,80%,40%,0.3);
+}
+.nox.cream, .cream {
+  background: hsla(60,80%,80%,0.4);
+}
+.nox.gold, .gold {
+  background: hsla(55,100%,50%,0.3);
+}
+.nox.goldenrod, .goldenrod {
+  background: hsla(50,90%,50%,0.3);
+}

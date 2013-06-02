@@ -9,6 +9,11 @@ define([], function() {
     
     loaded: function(nox) {
       
+      // SingleFinger.startedSwipeOn(nox.element, {
+      //   thatMatchesElementType: "LI",
+      //   whenTouchesDownOn
+      // });
+      
       nox.element.addEventListener("touchstart", function(event) {
         if (event.target.tagName == "LI") {
           event.target.classList.toggle("on");

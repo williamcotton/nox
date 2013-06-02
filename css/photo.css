@@ -1,0 +1,22 @@
+.nox.photo, .nox.becomming.photo {
+  opacity: 0.0;
+  text-align: center;
+  -webkit-transform: scale(10.0);
+  -webkit-transition: all 200ms cubic-bezier(1.000, 0.355, 0.925, 0.695);
+}
+
+.nox.photo h1 {
+  font-family: Helvetica;
+  font-size: 60px;
+  line-height: 200px;
+}
+
+.nox.book_of_spells ul li.photo {
+  background-repeat: no-repeat;
+  background-image: url(../images/camera-white-92.png);
+  opacity: 1.0;
+  background-position: 0px 10px;
+  border: none;
+  width: 92px;
+  height: 92px;
+}
