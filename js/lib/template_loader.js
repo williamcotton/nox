@@ -20,6 +20,7 @@ define(['lib/mustache'], function(Mustache) {
       var html = Mustache.to_html(template, data);
       var element = document.createElement("div");
       element.innerHTML = html;
+      console.log(template);
       return element;
     },
   

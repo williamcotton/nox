@@ -53,6 +53,7 @@ define(['lib/template_loader', 'lib/draggable'], function(TemplateLoader, Dragga
         appendTo: document.getElementById("nidonox")
       });
       var noxElement = element.getElementsByClassName("nox")[0];
+      console.log(element, noxElement);
       return noxElement;
     },
     
